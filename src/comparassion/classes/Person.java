@@ -1,16 +1,27 @@
-package comparassion.classes;
+package src.comparassion.classes;
+
+import java.util.Random;
 
 public class Person implements Comparable <Person> {
     private String name;
     private int CPF;
     private int age;
 
-    public Person (){}
+    private static final String[] NAMES = {"Kauã", "Matheus", "Victor", "André", "Danilo", "Romero", "Andreza", "Ana", "Carla", "Maria"};
+    private static final Random RANDOM = new Random();
 
-    public Person(String name, int CPF, int number){
-        this.name = name;
-        this.CPF = CPF;
-        this.age = number;
+    public Person(){}
+
+    public String generateRandomName() {
+        return NAMES[RANDOM.nextInt(NAMES.length)];
+    }
+
+    public int generateRandomCPF() {
+        return RANDOM.nextInt(900000000) + 100000000; // Gera CPF entre 100000000 e 999999999
+    }
+
+    public int generateRandomAge() {
+        return RANDOM.nextInt(101); // Gera idade entre 0 e 100
     }
 
     @Override
@@ -23,24 +34,12 @@ public class Person implements Comparable <Person> {
         return "Name: " + this.name + " Age: " + this.age + " CPF: " + this.CPF + "\n";
     }
 
-    public String getName() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
 
-    public int getCPF() {
-        return CPF;
-    }
-
     public void setCPF(int CPF) {
         this.CPF = CPF;
-    }
-
-    public int getAge() {
-        return age;
     }
 
     public void setAge(int age) {
